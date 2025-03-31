@@ -37,7 +37,10 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        browserName: 'chromium',
+        headless: false // Set to true to run in headless mode
+      },
     },
 
     // {
