@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('has title', async ({ page }) => {
-  await page.goto('https://www.facebook.com');  
+  await page.goto('https://www.facebook.com'); 
 await page.locator('//input[@id="email"]').fill('shreyansh12octob@gmail.com');
 await page.locator('//input[@id="pass"]').fill('STEPHEN#@#');
 await page.locator('//button[@name="login"]').click();
@@ -20,3 +20,11 @@ await page.waitForTimeout(5000);
 //   // Expects page to have a heading with the name of Installation.
 //   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+
+
+
+
+
+
+
+
