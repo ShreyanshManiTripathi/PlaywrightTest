@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('has title', async ({ page }) => {
-  await page.goto('https://www.facebook.com');  
+  await page.goto('https://www.facebook.com');   
 await page.locator('//input[@id="email"]').fill('shreyansh12octob@gmail.com');
 await page.locator('//input[@id="pass"]').fill('STEPHEN#@#');
 await page.locator('//button[@name="login"]').click();
