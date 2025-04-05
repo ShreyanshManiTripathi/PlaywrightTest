@@ -1,12 +1,51 @@
-import { test, expect } from '@playwright/test';
+import { test, expect ,playwright } from '@playwright/test';
+import {customTests as tests} from'../utils/test-base'
 
-test('has title', async ({ page }) => {
-  await page.goto('https://www.facebook.com');   
-await page.locator('//input[@id="email"]').fill('shreyansh12octob@gmail.com');
-await page.locator('//input[@id="pass"]').fill('STEPHEN#@#');
-await page.locator('//button[@name="login"]').click(); 
 
+// test.beforeAll(async ({browser})=>{
+//   const context= await browser.newContext();
+//   const page= await context.newPage();
+//   await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');   
+// await page.locator('//input[@name="username"]').fill('Admin');
+// await page.locator('//input[@name="password"]').fill('admin123');
+// await page.locator('//button[@type="submit"]').click(); 
+// await page.waitForLoadState("networkidle");
+// (await context).storageState({path:'state.json'});
+// })
+
+// Fixtures
+
+tests('log in using fixtures',async ({browser,testDataForOrder})=>{
+  const context= await browser.newContext();
+  const page= await context.newPage();
+  await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');   
+await page.locator('//input[@name="username"]').fill(testDataForOrder.username);
+await page.locator('//input[@name="password"]').fill(testDataForOrder.password);
+await page.locator('//button[@type="submit"]').click(); 
+await page.waitForLoadState("networkidle");
+// (await context).storageState({path:'state.json'});
+})
+
+/*
+
+
+STORAGE STATE
+
+
+test('has title', async ({ browser }) =>{
+  const context= await browser.newContext({storageState:'state.json'});
+  const page= await context.newPage();
+  await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+await page.waitForLoadState("networkidle");
+ await expect(page.locator("//h6[@class='oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module']")).toHaveText("Dashboard");
 await page.waitForTimeout(5000);
+});
+
+*/
+
+
+
+
 //   // Expect a title "to contain" a substring.
 //   await expect(page).toHaveTitle(/Playwright/);
 // });
@@ -19,7 +58,7 @@ await page.waitForTimeout(5000);
 
 //   // Expects page to have a heading with the name of Installation.
 //   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-});
+
 
 
 
